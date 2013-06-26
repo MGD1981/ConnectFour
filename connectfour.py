@@ -9,6 +9,11 @@ CSI="\x1B["
 reset=CSI+"m"
 # sample: print CSI+"31;40m" + "Colored Text" + CSI + "0m"
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> f579a869659e6f8546c40529b71f18a2860278dd
 class _Getch:
     """Gets a single character from standard input.  Does not echo to the
 screen."""
@@ -52,6 +57,7 @@ getch = _Getch()
 def cls():
     print CSI+"30;47m" + CSI+"2J" # clears screen
 
+<<<<<<< HEAD
 def winstate(board):
     if '0' not in str(board):
         return 2 # stalemate
@@ -214,6 +220,7 @@ def dispboard(boarddata):
                 chips(boarddata[2][y]), chips(boarddata[3][y]),
                 chips(boarddata[4][y]), chips(boarddata[5][y]),
                 chips(boarddata[6][y]))
+                boarddisp[6][y])
         if y != 5:
             print"               ├─┼─┼─┼─┼─┼─┼─┤"
         else:
