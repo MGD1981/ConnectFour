@@ -1,4 +1,5 @@
 # coding=utf-8
+import time
 import copy
 import pdb
 import sys
@@ -296,7 +297,7 @@ def play(ai, myboard, difficulty, aicolor):
 
     if ai and (p == aicolor):
         # I left this here s.t. human still has to press "enter" for computer to move
-        choice = getch()
+        time.sleep(.25)
         choice = (minimax(difficulty, myboard)[1]) + 1
     else:
         choice = _getHumanMove()
@@ -309,7 +310,7 @@ def play(ai, myboard, difficulty, aicolor):
     whowon = assignvalue(myboard.boarddata) * p
 
     if whowon == 0:
-        play(ai, myboard, difficulty, aicolor)
+        play(ai, myboard, difficulty, -aicolor)
     else:
         _handle_winner(whowon)
 
@@ -386,7 +387,7 @@ def intro():
     """ This function handles all of the game setup. Returns:
     * ai: True/False, whether ai is enabled
     * difficulty: {1, 2, 4} - difficulty level of AI. 0 if AI not enabled
-    * aicolor: -1 (green), 1 (red) - color AI will play. -1 if AI not enabled"""
+    * aicolor: 1 (green), -1 (red) - color AI will play. -1 if AI not enabled"""
     useai = _gameSelectUI()
     if useai: 
         difficulty = _difficultySelectUI()
@@ -399,7 +400,7 @@ def intro():
 
 if __name__=="__main__":
 
-    useai, difficulty, aicolor = intro()
+    useai, difficulty, aicolor = True, 4, 1 
     myboard = c4board()    
     play(useai, myboard, difficulty, aicolor)
     
