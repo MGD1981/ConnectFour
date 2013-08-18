@@ -67,6 +67,8 @@ def findy(board, x):
     y = 5
     while board[x][y] != 0:
         y -= 1
+        if y < 0:
+            return None
     return y
 
 def minimax(difficulty, board, depth=0):    
@@ -90,6 +92,8 @@ def minimax(difficulty, board, depth=0):
         if board.boarddata[x][0] != 0:
             continue
         y = findy(board.boarddata, x)
+        if y == None:
+            continue
         board.boarddata[x][y] = p 
 
         if depth == difficulty or winstate(board.boarddata) != 0:
